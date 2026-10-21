@@ -1,4 +1,7 @@
 #include "config.h"
+// SETUP: this project needs include/secrets.h, which is NOT in the repo (it holds a private token).
+// Create include/secrets.h in this bay with this one line:
+//   #define SECRET_TB_TOKEN "your-thingsboard-device-token"
 #include "secrets.h"
 
 // ---------------- WiFi Details ----------------
