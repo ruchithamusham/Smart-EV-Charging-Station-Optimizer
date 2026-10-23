@@ -20,4 +20,5 @@ extern int peakTariffEndHr ;
 extern bool overloadActive ;
 extern int overloadCurrentA ;
 extern int maxStationLoadW ;
+extern bool manualOverrideActive;
 #endif

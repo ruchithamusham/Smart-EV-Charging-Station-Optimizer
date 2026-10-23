@@ -16,5 +16,6 @@ int peakTariffEndHr = 18;
 bool overloadActive = false;
 int overloadCurrentA = 16;
 int maxStationLoadW = 3000;
+bool manualOverrideActive = false;
 
 

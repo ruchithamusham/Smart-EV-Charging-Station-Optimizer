@@ -8,8 +8,8 @@
 #include "model.h"
 #include "edge_ai.h"
 #include "optimization.h"
-
-
+#include "attributes.h"
+#include "rpc.h"
 
 void setup()
 {
