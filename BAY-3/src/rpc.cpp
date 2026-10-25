@@ -17,7 +17,13 @@ void handleRpc(String requestId, char* payload) {
   JsonDocument response;
 
   if (method == "setRelayState") {
-    bool state = params["state"] | false;
+        bool state = false;
+    JsonVariant p = doc["params"];
+    if (p.is<bool>()) {
+      state = p.as<bool>();          // dashboard sends plain true or false
+    } else {
+      state = p["state"] | false;    // {"state": true} format also works
+    }
     if (state){
       digitalWrite(RELAY_PIN,  HIGH );
 

@@ -9,6 +9,7 @@ extern PubSubClient mqtt;
 
 void connectWiFi();
 void connectMQTT();
+void mqttCallback(char* topic, byte* payload, unsigned int length);
 
 
 

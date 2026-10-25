@@ -14,6 +14,7 @@ void publishTelemetry() {
   doc["voltage"] = round(voltage * 10) / 10.0;
   doc["current"] = round(current * 10) / 10.0;
   doc["power"] = round(power * 10) / 10.0;
+  doc["energyWh"] = round(energyWh * 100) / 100.0;
   doc["temperature"] = round(temperature * 10) / 10.0;
   doc["bayStatus"] = bayStatus;
   doc["predictedArrivalProb"] = round(predictedArrivalProb * 100) / 100.0;
@@ -27,7 +28,7 @@ doc["overloadActive"] = overloadActive;
   char buffer[350];
   serializeJson(doc, buffer);
 // push the data to the cloud , topic, data-->buffer
-  mqtt.publish("v1/devices/me/telemetry", buffer);
-  Serial.print("[MQTT >>] ");
+   bool sent = mqtt.publish("v1/devices/me/telemetry", buffer);
+  Serial.print(sent ? "[MQTT >>] " : "[MQTT >> FAILED] ");
   Serial.println(buffer);
 }

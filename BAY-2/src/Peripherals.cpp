@@ -64,15 +64,16 @@ void plug_status(void)
    // detect the switch is pressed
    if(pluginReading==LOW && plugin_flag)
    {
-       sessionStartMs=millis();  // record the start time of the charging session
      // plug in switch is pressed
      plugin_flag=0;
    // change bay_status FREE to charging
-   if(bayStatus=="FREE"){
+      if(bayStatus=="FREE"){
       bayStatus="CHARGING";
-      Serial.println("BAY1 plugin is detected, it is charging");
-      digitalWrite(RELAY_PIN, HIGH); // turn on relay to start charging
-
+      sessionStartMs=millis();            // start time of this session
+      energyWh = 0;                       // new session starts at 0 Wh
+      Serial.print(BAY_ID);
+      Serial.println(" plugin is detected, it is charging");
+      digitalWrite(RELAY_PIN, HIGH);      // turn on relay to start charging
    }
    //update leds
    }
@@ -88,12 +89,15 @@ void plug_status(void)
      plugout_flag=0;
    
    // change bay_status  charging to FREE
-   if(bayStatus=="CHARGING"){
+      if(bayStatus=="CHARGING"){
       bayStatus="FREE";
-      Serial.println("BAY1 plugout is detected, it is free");
-
+      manualOverrideActive = false;       // automatic control comes back
+      throttleLevel = 100;
+      loadDecision = "IDLE";
+      digitalWrite(RELAY_PIN, LOW);       // stop charging
+      Serial.print(BAY_ID);
+      Serial.println(" plugout is detected, it is free");
    }
-   
    }
    if(plugoutReading == HIGH){
       plugout_flag=1;

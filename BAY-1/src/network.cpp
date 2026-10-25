@@ -4,6 +4,7 @@
 #include "config.h"
 #include "attributes.h"
 #include "rpc.h"
+#include <Arduino.h>
 
 WiFiClient espClient;
 PubSubClient mqtt(espClient);
