@@ -191,4 +191,4 @@ Each bay is a separate PlatformIO project with its own ThingsBoard device token:
 
 ESP32 (DOIT DevKit v1), C/C++ (Arduino framework), PlatformIO, Wokwi, MQTT (PubSubClient), ArduinoJson, DHT11, ThingsBoard Cloud
 
-Ruchi · [github.com/ruchithamusham](https://github.com/ruchithamusham)
+Ruchitha Musham · [github.com/ruchithamusham](https://github.com/ruchithamusham)
